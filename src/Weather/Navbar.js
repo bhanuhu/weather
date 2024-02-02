@@ -3,7 +3,8 @@ import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import Api from '../Api';
+import { useState } from 'react';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -44,18 +45,32 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
-   
- 
+export default function PrimarySearchAppBar({ sendDataToParent }) {
+    const [search,setsearch]=React.useState("");
+    const changehandler=(e)=>{
+        setsearch(e.target.value);
+        // console.log("val: ", search);
 
+    }
+    const handlerFuntion=(e)=>{
+        // console.log("searhc: ", search);
+        sendDataToParent(search);
+        setsearch("")
+    }
   return (
-    <Box sx={{ ml:'50%' , mr:'-100%' ,mt:'5%'}}>
+    <Box sx={{ mr:'-100%' ,mt:'5%'}}>
       
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
+            <StyledInputBase name='search'
+                onChange={changehandler}
+                value={search}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter")
+                        handlerFuntion();
+                    }}
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />

@@ -1,17 +1,31 @@
-import { Box, Stack, Typography } from "@mui/material"
+import { Box, Stack, SvgIcon, Typography ,Icon} from "@mui/material"
+import React, { useState } from 'react';
+import axios from 'axios';
+const First=(props)=>{
+    const abc=`https://openweathermap.org/img/wn/${props.icon}.png`
+   
 
-const First=()=>{
     return(
-        <Box sx={{ml:'60%' , mt:'10%'}}> 
+        <Box sx={{ mt:'10%'}}> 
         <Stack direction="row">
-        <Stack>
-        <Typography variant='h2'>Madrid</Typography>
-        <Typography variant='h6'>Chance of Rain</Typography>
-        <Typography variant='h4' sx={{mt:'15%'}}>30</Typography>
-        </Stack>
-        <Box sx={{position:'relative',alignContent:'center'}}>
-        <Typography variant='h2' >Hello</Typography>
-        </Box>
+            <Stack>
+                <Typography variant='h2'>{props.name}</Typography>
+                <Typography variant='h6'>{props.description}</Typography>
+                <Typography variant='h4' sx={{mt:'15%'}}>{props.temp} degree </Typography>
+                <Typography variant='h6' sx={{mt:'5%'}}>{props.min} / {props.max} </Typography>
+
+            </Stack>
+            <Stack direction="row">
+                <Box sx={{position:'relative',alignContent:'center'}}>
+                    <Typography variant='h2' sx={{fontSize:150}}>
+                        <Icon sx={{height:'350%',width:'250%'}} >
+                            <img src={abc} height="100%" width="100%" alt="Weather Icon" />
+                        </Icon>
+                    </Typography>
+
+                </Box>
+                
+            </Stack>
         </Stack>
         
 

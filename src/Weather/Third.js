@@ -3,22 +3,22 @@ import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import AirIcon from '@mui/icons-material/Air';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import Brightness5SharpIcon from '@mui/icons-material/Brightness5Sharp';
-const Third=()=>{
+const Third=(props)=>{
     return(
-        <Box sx={{backgroundColor:'#202B3B' ,m:'2%',p:'2%',borderRadius:5,ml:'60%' , mt:'10%',width:'100%',height:'100%'}}>
+        <Box sx={{backgroundColor:'#202B3B' ,p:'2%',borderRadius:5 , mt:'17%',width:'45%',height:'10%',position:'absolute'}}>
         <Typography>AIR CONDITIONS</Typography>
         <Stack>
         <Stack direction="row">
         <DeviceThermostatIcon/>
-        <Typography>Real Feel</Typography>
+        <Typography>Feels Like : {props.feel}</Typography>
         <AirIcon sx={{ml:'30%'}}/>
-        <Typography>Wind</Typography>
+        <Typography>Wind : {props.wind}</Typography>
         </Stack>
         <Stack direction="row">
         <WaterDropIcon/>
-        <Typography>Chance of Rain</Typography>
+        <Typography>Humidity : {props.humidity}</Typography>
         <Brightness5SharpIcon sx={{ml:'20%'}}/>
-        <Typography>UV Index</Typography>
+        <Typography>Direction : {props.direction} deg</Typography>
         </Stack>
         </Stack>
         
